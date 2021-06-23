@@ -1,0 +1,144 @@
+STAGE #01: PREPARING THE PROJECT
+    01. Backend dependencies:
+        - npm -D nodemon
+        - npm install express
+        - npm install express-validator
+        - npm install mongoose
+        - npm install config
+        - npm install jsonwebtoken
+        - npm install bcryptjs
+    02. Frontend depenedecies:
+        - npx create-react-app . --template typescript
+        - npm react-router-dom
+        - npm axios
+        - npm redux
+        - npm react-redux
+        - npm redux-thunk
+        - npm redux-devtools-extension
+        - npm node-sass@4.14.1
+        - npm @types/react-router
+        - npm @types/react-router-dom
+        - npm @types/axios
+
+STAGE #02: PROJECT STRUCTURE:
+    01. Backend:
+        - App.js
+        + models:
+            - User.js (mongoose schema):
+                firstName: String
+                lastName: String
+                age: Number
+                email: String
+                password: String
+                tasks: [
+                    {
+                        title: String
+                        priority: String
+                        isCompleted: boolean
+                    }
+                ]
+        + config:
+            - default.json (global variables)     
+        + routes:
+            - routesAuth (auth endpoints):
+                - register endpoint
+                - login endpoint
+            - routesUser (user endpoints):
+                - edit endpoint     
+                - delete endpoint 
+    02. Frontend:
+        + public:
+            - index.html
+        + src:
+            - index.tsx
+            - index.module.scss
+            - App.tsx
+            - App.module.scss
+            + pages:
+                + TasksListPage:
+                    - TasksListPage.tsx
+                    - TasksListPage.module.scss
+                - index.ts
+            + components:
+                + Header: (main title and auth controlls)
+                    - Header.tsx
+                    - Header.module.scss
+                + Auth: (login and registration logics)
+                    - Login.tsx
+                    - Register.tsx
+                    - Auth.module.scss
+                + Footer: (rights)
+                    - Footer.tsx
+                    - Footer.module.scss
+                + Notification: (text note to user)
+                    - Notification.tsx
+                    - Notification.module.scss    
+                + Profile: (user info + edit and delete logics)
+                    - Profile.tsx
+                    - Profile.module.scss 
+                + Statistics: (total, completed tasks and tasks left)
+                    - Statistics.tsx
+                    - Statistics.module.scss   
+                + TasksList:
+                    - TasksList.tsx
+                    - Task.tsx   
+                    - TasksList.module.scss
+                - index.ts
+            + ui
+                + Button:
+                    - Button.tsx
+                    - Button.module.scss
+                + Input:
+                    - Input.tsx
+                    - Input.module.scss
+                + Select:
+                    - Select.tsx
+                    - Select.module.scss    
+            + types
+            + redux
+                + actions:
+                    - authActions.ts
+                    - userActions.ts
+                + types:
+                    - authTypes.ts  
+                    - userTypes.ts  
+                + reducers:
+                    - mainReducer.ts
+                - store.ts        
+            + scss 
+                - variables.scss
+                - mixins.scss
+
+STAGE #03: CONNECTING TO DATABASE:
+    01. Take the connection link from MongoDB.
+    02. Create server in app.js.
+    03. Connect to MongoDB.
+
+STAGE #04: WRITE AUTHENTICATION MODULE:
+    01. Auth Routes:
+        - describe /register endpoint
+        - describe /login endpoint
+    02. Test endpoints with Postman or Insomnia.
+    03. Write client side:
+        - Login
+        - Register
+
+STAGE #05: WRITE USER PROFILE MODULE:
+    01. User Routes:
+        - describe /edit endpoint
+        - describe /delete endpoint
+    02. Write Profile component from client side:
+        - describe profile updating logics
+        - describe profile deleting logics  
+
+STAGE #06: WRITE TASKS MODULE:
+    01. Tasks Routes:
+        - describe /get endpoint
+        - describe /add endpoint
+        - describe /update endpoint
+        - describe /delete endpoint
+    02. Write TasksList component from client side:
+        - describe getting all tasks logics 
+        - describe adding one task
+        - describe updating task
+        - describe removing task  

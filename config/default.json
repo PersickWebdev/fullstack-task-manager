@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "mongoUrl": "mongodb+srv://vlad:1234567890@expensetracker.8xa1g.mongodb.net/ExpenseTracker?retryWrites=true&w=majority",
+    "jwtSecret": "someExtraUltraSecretPhrase"
+}
