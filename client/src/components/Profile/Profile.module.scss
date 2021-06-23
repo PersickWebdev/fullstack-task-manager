@@ -1,0 +1,72 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.profile {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: $grey-dark;
+    padding: 1.5rem;
+
+    &__heading {
+        width: 100%;
+        text-align: center;
+        border-bottom: 0.1rem solid $white;
+        margin-bottom: 1rem;
+        @include text(2rem, bold, uppercase, $white);
+    }
+
+    &__value {
+        @include text(1.6rem, semi-bold, none, $white);
+    }
+}
+
+.form {
+    &__input-feild {
+        padding: 1rem 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 0.1rem solid $white;
+        margin-bottom: 2rem;
+    }
+
+    &__label {
+        width: 100%;
+        margin-bottom: 1rem;
+        @include text(1.6rem, regular, none, $white);
+    }
+
+    &__input {
+        padding: 0.5rem;
+        border: none;
+        outline: none;
+        background-color: $grey-light;
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__button {
+        @include text(1.4rem, bold, uppercase, $white);
+        border: none;
+        padding: 1rem 2rem;
+        outline: none;
+        cursor: pointer;
+        transition: $transition;
+        background-color: $golden;
+    }
+
+    &__button.delete {
+        background-color: $red;
+    }
+
+    &__button:hover {
+        background-color: $white;
+        color: $golden;
+    }
+}

@@ -1,0 +1,25 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.select {
+    position: relative;
+
+    &__input {
+        visibility: hidden;
+        height: 0;
+    }
+
+    &__input:focus .dropdown {
+        opacity: 1;
+    }
+}
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.8rem;
+    opacity: 0;
+    transition: $transition;
+}

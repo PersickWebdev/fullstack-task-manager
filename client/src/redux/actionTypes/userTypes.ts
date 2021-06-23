@@ -1,0 +1,5 @@
+export const USER_TYPES = {
+    SET: 'USER/SET_USER',
+    EDIT: 'USER/EDIT_USER',
+    REMOVE: 'USER/REMOVE_USER',
+}

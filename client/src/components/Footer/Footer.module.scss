@@ -1,0 +1,13 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.footer {
+    padding: 3rem;
+    background-color: $blue;
+
+    &__rights {
+        @include text(2rem, bold, uppercase, $white);
+        letter-spacing: 0.5rem;
+        text-align: center;
+    }
+}

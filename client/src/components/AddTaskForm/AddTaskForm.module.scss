@@ -1,0 +1,12 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.form {
+    display: flex;
+    align-items: center;
+
+    &__input-box {
+        max-width: 60%;
+        width: 100%;
+    }
+}

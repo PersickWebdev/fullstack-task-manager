@@ -1,0 +1,22 @@
+@mixin container() {
+    max-width: 144rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@mixin text($font-size, $font-weight, $text-transform, $color) {
+    font-size: $font-size;
+    text-transform: $text-transform;
+    color: $color;
+    
+    @if $font-weight == bold {
+        font-weight: 900;
+    } @else if $font-size == semi-bold {
+        font-weight: 600;
+    } @else if $font-weight == meduim {
+        font-weight: 500;
+    } @else if $font-weight == regular {
+        font-weight: 400;
+    } 
+}

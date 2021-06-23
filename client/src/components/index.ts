@@ -1,0 +1,10 @@
+export { default as Header } from './Header/Header';
+export { default as Register } from './Auth/Register';
+export { default as Login } from './Auth/Login';
+export { default as TasksList } from './TasksList/TasksList';
+export { default as Task } from './TasksList/Task';
+export { default as AddTaskForm } from './AddTaskForm/AddTaskForm';
+export { default as Profile } from './Profile/Profile';
+export { default as Footer } from './Footer/Footer';
+export { default as Statistics } from './Statistics/Statistics';
+export { default as Notification } from './Notification/Notification';

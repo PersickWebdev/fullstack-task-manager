@@ -1,0 +1,15 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.8rem;
+    background-color: $white-semi-transparent;
+    transition: $transition;
+
+    &::placeholder {
+        @include text(1.4rem, regular, none, $white);
+    }
+}

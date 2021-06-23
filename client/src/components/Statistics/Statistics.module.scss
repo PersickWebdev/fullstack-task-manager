@@ -1,0 +1,25 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.statistics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+
+    &__item {
+        width: 33.33%;
+        padding: 1.5rem 0;
+        text-align: center;
+        background-color: $white-semi-transparent;
+    }
+
+    &__item-name,
+    &__item-value {
+        @include text(1.6rem, semi-bold, none, $grey-dark);
+    }
+
+    &__item-name:not(:last-child) {
+        margin: 3rem;
+    }
+}

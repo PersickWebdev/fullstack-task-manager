@@ -1,0 +1,13 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.notification {
+    &__text {
+        @include container();
+        @include text(1.6rem, semi-bold, none, $grey-dark);
+        padding: 1.5rem;
+        text-align: center;
+        border-radius: 10px;
+        background-color: $white-semi-transparent;
+    }
+}
