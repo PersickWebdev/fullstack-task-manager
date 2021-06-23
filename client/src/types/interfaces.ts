@@ -7,12 +7,13 @@ export interface ITask {
 }
 
 export interface IUser {
-    userId: string,
+    userId: string;
+    token: string;
     firstName: string;
     lastName: string;
     age: string;
     email: string;
-    password: string;
+    password?: string;
     tasks: ITask[];
 }
 
@@ -34,8 +35,17 @@ export interface ILoginFormData {
     password?: string;
 }
 
-export interface IProfileFormData {
-    firstName?: string;
-    lastName?: string;
-    age?: string;
+// UI Interfaces:
+export interface IButton {
+    children?: any;
+    action?: () => void;
+    buttonStyles?: any;
+}
+
+export interface IInput {
+    name: string;
+    value?: string;
+    action?: () => void;
+    placeholder: string;
+    inputStyles?: any;
 }

@@ -41,7 +41,7 @@ const Register = () => {
                 Register
             </h1>
             <form className={styles['form']}>
-                <div className={styles['form__input-feild']}>
+                <div className={styles['form__input-field']}>
                     <label 
                         className={styles['form__label']}
                         htmlFor="firstName"
@@ -57,7 +57,7 @@ const Register = () => {
                     />
                     <span className={styles['form__input-warning']}></span>
                 </div>
-                <div className={styles['form__input-feild']}>
+                <div className={styles['form__input-field']}>
                     <label 
                         className={styles['form__label']}
                         htmlFor="lastName"
@@ -73,7 +73,7 @@ const Register = () => {
                     />
                     <span className={styles['form__input-warning']}></span>
                 </div>
-                <div className={styles['form__input-feild']}>
+                <div className={styles['form__input-field']}>
                     <label
                         className={styles['form__label']} 
                         htmlFor="age"
@@ -89,7 +89,7 @@ const Register = () => {
                     />
                     <span className={styles['form__input-warning']}></span>
                 </div>
-                <div className={styles['form__input-feild']}>
+                <div className={styles['form__input-field']}>
                     <label
                         className={styles['form__label']} 
                         htmlFor="email"
@@ -105,7 +105,7 @@ const Register = () => {
                     />
                     <span className={styles['form__input-warning']}></span>
                 </div>
-                <div className={styles['form__input-feild']}>
+                <div className={styles['form__input-field']}>
                     <label 
                         className={styles['form__label']}
                         htmlFor="password"

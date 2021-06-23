@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './Button.module.scss';
+import { IButton } from '../../types/interfaces';
 
-const Button = (props: any) => {
+const Button = ({ children, action, buttonStyles }:IButton) => {
     return (
         <button
             className={styles['button']}
-            name={props.name}
-            onClick={props.action}
+            onClick={action}
+            style={buttonStyles ? buttonStyles : {}}
         >
-            {props.children}
+            {children}
         </button>
     );
 }

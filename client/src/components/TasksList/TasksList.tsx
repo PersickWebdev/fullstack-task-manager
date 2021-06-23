@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './TasksList.module.scss';
 import { useSelector } from 'react-redux';
-import { Task } from '../../components';
-import { ITask, IUserReducer } from '../../types/interfaces';
+import { AddTaskForm, Task } from '../../components';
+import { IUserReducer } from '../../types/interfaces';
 
 interface ITasksList {
     userReducer: IUserReducer
@@ -24,11 +24,10 @@ const TasksList = () => {
 
     return (
         <div className={styles['tasks-list']}>
-            <div className={styles['container']}>
-                <ul className={styles['list']}>
-                    {mappedTasks}
-                </ul>
-            </div>
+            <AddTaskForm />
+            <ul className={styles['list']}>
+                {mappedTasks}
+            </ul>
         </div>
     );
 };

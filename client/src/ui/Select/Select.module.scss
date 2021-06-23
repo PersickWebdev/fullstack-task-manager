@@ -5,8 +5,12 @@
     position: relative;
 
     &__input {
-        visibility: hidden;
-        height: 0;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 0.8rem;
+        background-color: $white-semi-transparent;
+        transition: $transition;
     }
 
     &__input:focus .dropdown {

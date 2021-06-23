@@ -3,7 +3,6 @@ import styles from './Auth.module.scss';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Button } from '../../ui';
 import { ILoginFormData } from '../../types/interfaces';
 import axios from 'axios';
 import { setUserAC } from '../../redux/actionCreators/userActions';
@@ -28,6 +27,7 @@ const Login = () => {
             const response = await axios.post('http://localhost:5000/api/auth/login', formData);
             if (response.status === 201) {
                 dispatch(setUserAC(response.data));
+                localStorage.setItem('user', JSON.stringify(response.data));
                 history.push('/tasksListPage');
             }
         } catch(error) {
@@ -41,7 +41,7 @@ const Login = () => {
                 Login
             </h1>
             <form className={styles['form']}>
-                <div className={styles['form__input-feild']}>
+                <div className={styles['form__input-field']}>
                     <label 
                         className={styles['form__label']}
                         htmlFor="email"
@@ -57,7 +57,7 @@ const Login = () => {
                     />
                     <span className={styles['form__input-warning']}></span>
                 </div>
-                <div className={styles['form__input-feild']}>
+                <div className={styles['form__input-field']}>
                     <label 
                         className={styles['form__label']}
                         htmlFor="password"

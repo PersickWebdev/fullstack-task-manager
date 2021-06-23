@@ -1,6 +1,6 @@
 import React from 'react';
-import { Input, Select, Button } from '../../ui';
 import styles from './AddTaskForm.module.scss';
+import { Input, Select, Button } from '../../ui';
 
 const AddTaskForm = () => {
     return (
@@ -11,9 +11,17 @@ const AddTaskForm = () => {
                     placeholder="Enter task description ..."
                 />
             </div>
-            <Select/>
+            <Select
+                selectStyles={{
+                    width: '20%'
+                }}
+            />
             <div className={styles['form__buttons']}>
-                <Button>
+                <Button
+                    buttonStyles={{
+                        width: '100%'
+                    }}
+                >
                     Add
                 </Button>
             </div>

@@ -18,7 +18,7 @@ const Select = ({ selectStyles }:ISelect) => {
                 <input 
                     className={styles['select__input']}
                     id="prioritySelect"
-                    type="checkbox" 
+                    type="text"
                 />
             </label>
             <ul className={styles['dropdown']}>

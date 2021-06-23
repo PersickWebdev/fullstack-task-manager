@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Profile.module.scss';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { IUser, IProfileFormData } from '../../types/interfaces';
+import { IUser } from '../../types/interfaces';
 import axios from 'axios';
 import { setUserAC, removeUserAC } from '../../redux/actionCreators/userActions';
 
@@ -11,20 +11,23 @@ interface IProfile {
 }
 
 const Profile = ({ user }:IProfile) => {
-    console.log(user);
-    
     const dispatch = useDispatch();
     const history = useHistory();
     const [ editMode, setEditMode ] = useState<boolean>(false);
-    const [ formData, setFormData ] = useState<IProfileFormData>({});
-    // const [ inputValue, setInputValue ] = useState<string>('');
+    const [ formData, setFormData ] = useState<IUser>({
+        userId: user.userId,
+        token: user.token,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        age: user.age,
+        email: user.email,
+        tasks: user.tasks
+    });
 
     const collectInputValue = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        // setInputValue(event.target.value);
         setFormData(() => {
             return {
                 ...formData,
-                email: user.email,
                 [event.target.name]: event.target.value
             }
         });
@@ -37,8 +40,6 @@ const Profile = ({ user }:IProfile) => {
 
     const deleteProfileHandler = async (event: React.MouseEvent, userId: string) => {
         event.preventDefault();
-        console.log(userId);
-        
         try {
             const response = await axios.delete('http://localhost:5000/api/user/user-delete', {
                 data: {
@@ -46,21 +47,23 @@ const Profile = ({ user }:IProfile) => {
                 }
             });
             if (response.status === 200) {
-                alert(response.data.message);
+                localStorage.clear();
                 dispatch(removeUserAC());
+                alert(response.data.message);
                 history.push('/');
             }
         } catch(error) {
             alert(error.response.data.message);
         }
-        
     }
 
     const submitHandler = async (event: React.MouseEvent) => {
         event.preventDefault();
         const response = await axios.patch('http://localhost:5000/api/user/user-edit', formData);
         if (response.status === 201) {
+            localStorage.clear();
             dispatch(setUserAC(formData));
+            localStorage.setItem('user', JSON.stringify(formData));
             alert(response.data.message);
             setEditMode(false);
         }

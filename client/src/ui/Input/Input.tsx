@@ -1,13 +1,6 @@
 import React from 'react';
 import styles from './Input.module.scss';
-
-interface IInput {
-    name: string;
-    value?: string;
-    action?: () => void;
-    inputStyles?: any;
-    placeholder?: string;
-}
+import { IInput } from '../../types/interfaces';
 
 const Input = ({ name, value, action, inputStyles, placeholder }:IInput) => {
     return (
@@ -17,6 +10,7 @@ const Input = ({ name, value, action, inputStyles, placeholder }:IInput) => {
             name={name}
             value={value}
             onChange={action}
+            placeholder={placeholder}
             style={inputStyles ? inputStyles : {}}
         />
     );

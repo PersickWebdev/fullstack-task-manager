@@ -4,12 +4,14 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Statistics, Notification } from '../../components';
 import { removeUserAC } from '../../redux/actionCreators/userActions';
+import { IUser } from '../../types/interfaces';
 
 interface IHeader {
-    isLogged: boolean
+    isLogged: boolean;
+    user: IUser;
 }
 
-const Header = ({ isLogged }:IHeader) => {
+const Header = ({ isLogged, user }:IHeader) => {
     const dispatch = useDispatch();
     
     const signOutHandler = async () => {
@@ -61,7 +63,9 @@ const Header = ({ isLogged }:IHeader) => {
                 </div>
                 {isLogged
                     ?
-                    <Statistics/>
+                    <Statistics
+                        user={user}
+                    />
                     :
                     <Notification/>
                 }

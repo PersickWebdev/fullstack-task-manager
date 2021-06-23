@@ -1,18 +1,15 @@
 import React from 'react';
 import styles from './Statistics.module.scss';
-import { useSelector } from 'react-redux';
-import { userReducer } from '../../redux/reducers/userReducer';
-import { IUserReducer } from '../../types/interfaces';
+import { IUser } from '../../types/interfaces';
 
 interface IStatistics {
-    userReducer: IUserReducer
+    user: IUser;
 }
 
-const Statistics = () => {
-    const { user } = useSelector(({ userReducer }:IStatistics) => userReducer);
+const Statistics = ({ user }:IStatistics) => {
     const tasks = user.tasks;
     const tasksCompleted = tasks.map((task) => task.isCompleted);
-    const tasksLeft = (tasks.length + 1) - (tasksCompleted.length + 1);
+    const tasksLeft = (tasks.length) - (tasksCompleted.length);
 
     return (
         <div className={styles['statistics']}>
@@ -21,7 +18,7 @@ const Statistics = () => {
                     Total tasks:
                 </span>
                 <span className={styles['statistics__item-value']}>
-                    {tasks.length + 1 || 0}
+                    {tasks.length || 0}
                 </span>
             </div>
             <div className={styles['statistics__item']}>
@@ -29,7 +26,7 @@ const Statistics = () => {
                     Completed tasks:
                 </span>
                 <span className={styles['statistics__item-value']}>
-                    {tasksCompleted.length + 1 || 0}
+                    {tasksCompleted.length || 0}
                 </span>
             </div>
             <div className={styles['statistics__item']}>
