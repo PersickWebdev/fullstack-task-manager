@@ -11,7 +11,7 @@ const Select = ({ selectStyles }:ISelect) => {
             className={styles['select']}
             style={selectStyles ? selectStyles : {}}
         >
-            <label 
+            <label
                 className={styles['select__label']}
                 htmlFor="prioritySelect"
             >
@@ -19,6 +19,7 @@ const Select = ({ selectStyles }:ISelect) => {
                     className={styles['select__input']}
                     id="prioritySelect"
                     type="text"
+                    value="Priority"
                 />
             </label>
             <ul className={styles['dropdown']}>

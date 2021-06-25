@@ -23,10 +23,6 @@ html {
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 5rem 0;
     background-color: $grey-light;
-    min-height: 84vh;
 }

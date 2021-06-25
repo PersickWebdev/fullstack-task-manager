@@ -2,14 +2,13 @@
 @import '../../scss/mixins';
 
 .input {
-    width: 100%;
     border: none;
     outline: none;
-    padding: 0.8rem;
+    padding: 0.8rem 0 0.8rem 0.8rem;
     background-color: $white-semi-transparent;
     transition: $transition;
 
     &::placeholder {
-        @include text(1.4rem, regular, none, $white);
+        @include text(1.4rem, regular, none, $grey-dark);
     }
 }

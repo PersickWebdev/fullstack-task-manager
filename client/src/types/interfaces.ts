@@ -1,3 +1,7 @@
+export interface INotification {
+    message: string;
+}
+
 export interface ITask {
     id?: string;
     key?: string;

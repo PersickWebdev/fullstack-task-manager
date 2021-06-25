@@ -1,1 +1,1 @@
-export { default as TasksListPage } from './TasksListPage/TasksListPage';
+export { default as TasksPage } from './TasksPage/TasksPage';

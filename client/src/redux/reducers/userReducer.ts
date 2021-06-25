@@ -13,6 +13,11 @@ export const userReducer = (state = initialState, action: any) => {
                 user: action.payload,
                 isLogged: true
             }
+        case USER_TYPES.SET_IS_LOGGED:
+            return {
+                ...state,
+                isLogged: action.payload
+            }
         case USER_TYPES.EDIT:
             return {
                 ...state, 

@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Statistics, Notification } from '../../components';
-import { removeUserAC } from '../../redux/actionCreators/userActions';
+import {removeUserAC, setIsLogged} from '../../redux/actionCreators/userActions';
 import { IUser } from '../../types/interfaces';
 
 interface IHeader {
@@ -16,13 +16,15 @@ const Header = ({ isLogged, user }:IHeader) => {
     
     const signOutHandler = async () => {
         dispatch(removeUserAC());
+        dispatch(setIsLogged(false));
+        localStorage.clear();
     }
 
     return (
         <header className={styles['header']}>
             <div className={styles['container']}>
                 <div className={styles['header__content']}>
-                    <h1 className={styles['header__heading-h1']}>Tasks Manager</h1>
+                    <h1 className={styles['header__heading-h1']}>Task Manager</h1>
                     <div className={styles['buttons']}>
                         {isLogged
                             ?
@@ -67,7 +69,9 @@ const Header = ({ isLogged, user }:IHeader) => {
                         user={user}
                     />
                     :
-                    <Notification/>
+                    <Notification
+                        message="You need to be authorised to use the application"
+                    />
                 }
             </div>
         </header>

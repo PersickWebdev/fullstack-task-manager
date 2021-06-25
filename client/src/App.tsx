@@ -2,10 +2,9 @@ import React from 'react';
 import styles from './App.module.scss';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { TasksListPage } from './pages';
-import { Header, Register, Login, Profile, Footer } from './components';
+import { Header, Register, Login, Profile, TasksList } from './components';
 import { IUserReducer } from './types/interfaces';
-import { setUserAC } from './redux/actionCreators/userActions';
+import { setIsLogged, setUserAC } from './redux/actionCreators/userActions';
 
 interface IApp {
     userReducer: IUserReducer
@@ -16,7 +15,8 @@ const App = () => {
 
     const currentUser = localStorage.getItem('user');
     if (currentUser) {
-        dispatch(setUserAC(currentUser));
+        dispatch(setUserAC(JSON.parse(currentUser)));
+        dispatch(setIsLogged(true));
     }
 
     const { isLogged, user } = useSelector(({ userReducer }: IApp) => userReducer);
@@ -33,8 +33,8 @@ const App = () => {
                         ?
                         <>
                             <Switch>
-                                <Route path="/tasksListPage">
-                                    <TasksListPage/>
+                                <Route path="/tasksPage">
+                                    <TasksList/>
                                 </Route>
                                 <Route path="/profile">
                                     <Profile
@@ -57,7 +57,6 @@ const App = () => {
                     }
                 </div>
             </main>
-            <Footer/>
         </div>
     );
 }

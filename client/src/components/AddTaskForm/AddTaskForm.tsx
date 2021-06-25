@@ -9,6 +9,9 @@ const AddTaskForm = () => {
                 <Input
                     name="addTask"
                     placeholder="Enter task description ..."
+                    inputStyles={{
+                        width: '99.5%'
+                    }}
                 />
             </div>
             <Select

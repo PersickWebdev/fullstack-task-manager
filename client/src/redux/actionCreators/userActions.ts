@@ -19,3 +19,10 @@ export const removeUserAC = () => {
         type: USER_TYPES.REMOVE
     }
 }
+
+export const setIsLogged = (booleanValue: boolean) => {
+    return {
+        type: USER_TYPES.SET_IS_LOGGED,
+        payload: booleanValue
+    }
+}

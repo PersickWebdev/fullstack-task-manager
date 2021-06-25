@@ -28,7 +28,7 @@ const Login = () => {
             if (response.status === 201) {
                 dispatch(setUserAC(response.data));
                 localStorage.setItem('user', JSON.stringify(response.data));
-                history.push('/tasksListPage');
+                history.push('/tasksPage');
             }
         } catch(error) {
             alert(error.response.data.message);

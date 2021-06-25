@@ -18,7 +18,7 @@ const Statistics = ({ user }:IStatistics) => {
                     Total tasks:
                 </span>
                 <span className={styles['statistics__item-value']}>
-                    {tasks.length || 0}
+                    {tasks.length}
                 </span>
             </div>
             <div className={styles['statistics__item']}>
@@ -26,7 +26,7 @@ const Statistics = ({ user }:IStatistics) => {
                     Completed tasks:
                 </span>
                 <span className={styles['statistics__item-value']}>
-                    {tasksCompleted.length || 0}
+                    {tasksCompleted.length}
                 </span>
             </div>
             <div className={styles['statistics__item']}>
@@ -34,7 +34,7 @@ const Statistics = ({ user }:IStatistics) => {
                     Tasks left:
                 </span>
                 <span className={styles['statistics__item-value']}>
-                    {tasksLeft || 0}
+                    {tasksLeft}
                 </span>
             </div>
         </div>

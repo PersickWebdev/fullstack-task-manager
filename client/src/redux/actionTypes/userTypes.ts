@@ -1,5 +1,6 @@
 export const USER_TYPES = {
     SET: 'USER/SET_USER',
+    SET_IS_LOGGED: 'USER/SET_IS_LOGGED',
     EDIT: 'USER/EDIT_USER',
     REMOVE: 'USER/REMOVE_USER',
 }

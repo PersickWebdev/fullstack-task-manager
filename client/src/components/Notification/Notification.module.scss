@@ -5,6 +5,7 @@
     &__text {
         @include container();
         @include text(1.6rem, semi-bold, none, $grey-dark);
+        width: unset;
         padding: 1.5rem;
         text-align: center;
         border-radius: 10px;
