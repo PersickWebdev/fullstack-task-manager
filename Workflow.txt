@@ -1,13 +1,14 @@
 STAGE #01: PREPARING THE PROJECT
-    01. Backend dependencies:
+    01. Server dependencies:
         - npm -D nodemon
+        - npm -D concurrently
         - npm install express
         - npm install express-validator
         - npm install mongoose
         - npm install config
         - npm install jsonwebtoken
         - npm install bcryptjs
-    02. Frontend depenedecies:
+    02. Client dependencies:
         - npx create-react-app . --template typescript
         - npm react-router-dom
         - npm axios
@@ -20,125 +21,266 @@ STAGE #01: PREPARING THE PROJECT
         - npm @types/react-router-dom
         - npm @types/axios
 
-STAGE #02: PROJECT STRUCTURE:
-    01. Backend:
+STAGE #02: FILE STRUCTURE:
+    01. Server side:
         - App.js
-        + models:
-            - User.js (mongoose schema):
-                firstName: String
-                lastName: String
-                age: Number
-                email: String
-                password: String
-                tasks: [
-                    {
-                        title: String
-                        priority: String
-                        isCompleted: boolean
-                    }
-                ]
+        - package.json
+        - .gitignore
         + config:
-            - default.json (global variables)     
+            - default.json
+        + models:
+            - userModel
         + routes:
-            - routesAuth (auth endpoints):
-                - register endpoint
-                - login endpoint
-            - routesUser (user endpoints):
-                - edit endpoint     
-                - delete endpoint 
-    02. Frontend:
+            - authRoutes
+            - userRoutes
+
+    02. Client side:
+        - package.json
+        - .gitignore
         + public:
             - index.html
         + src:
-            - index.tsx
-            - index.module.scss
-            - App.tsx
-            - App.module.scss
-            + pages:
-                + TasksListPage:
-                    - TasksListPage.tsx
-                    - TasksListPage.module.scss
-                - index.ts
             + components:
-                + Header: (main title and auth controlls)
+                - index.ts
+                + Header:
                     - Header.tsx
                     - Header.module.scss
-                + Auth: (login and registration logics)
+                + Footer:
+                    - Footer.tsx
+                    - Footer.module.scss
+                + Auth:
                     - Login.tsx
                     - Register.tsx
                     - Auth.module.scss
-                + Footer: (rights)
-                    - Footer.tsx
-                    - Footer.module.scss
-                + Notification: (text note to user)
-                    - Notification.tsx
-                    - Notification.module.scss    
-                + Profile: (user info + edit and delete logics)
-                    - Profile.tsx
-                    - Profile.module.scss 
-                + Statistics: (total, completed tasks and tasks left)
+                + Statistics:
                     - Statistics.tsx
-                    - Statistics.module.scss   
+                    - Statistics.module.scss
                 + TasksList:
                     - TasksList.tsx
-                    - Task.tsx   
                     - TasksList.module.scss
+                    - Task.tsx
+                    - Task.module.scss
+                + Profile:
+                    - Profile.tsx
+                    - Profile.module.scss
+                + AddTaskForm:
+                    - AddTaskForm.tsx
+                    - AddTaskForm.module.scss
+            + pages
                 - index.ts
+                + TasksPage:
+                    - TasksPage.tsx
+                    - TasksPage.module.scss
             + ui
-                + Button:
-                    - Button.tsx
-                    - Button.module.scss
+                - index.ts
                 + Input:
                     - Input.tsx
                     - Input.module.scss
+                + Button:
+                    - Button.tsx
+                    - Button.module.scss
                 + Select:
                     - Select.tsx
-                    - Select.module.scss    
-            + types
-            + redux
-                + actions:
-                    - authActions.ts
+                    - Select.module.scss
+                + Notification:
+                    - Notification.tsx
+                    - Notification.module.scss
+                + Modal:
+                    - Modal.tsx
+                    - Modal.module.scss
+            + redux:
+                - store.ts
+                + actionTypes:
+                    - userTypes.ts
+                + actionCreators:
                     - userActions.ts
-                + types:
-                    - authTypes.ts  
-                    - userTypes.ts  
                 + reducers:
-                    - mainReducer.ts
-                - store.ts        
-            + scss 
+                    - userReducer.ts
+            + types:
+                - interfaces.ts
+            + scss:
                 - variables.scss
                 - mixins.scss
+            - App.tsx
+            - App.module.scss
+            - index.tsx
 
-STAGE #03: CONNECTING TO DATABASE:
-    01. Take the connection link from MongoDB.
-    02. Create server in app.js.
-    03. Connect to MongoDB.
+STAGE #03: DATA STRUCTURE:
+    01. Server side:
+        + endpoints:
+            - /api/auth/login
+            - /api/auth/register
+            - /api/user/edit
+            - /api/user/delete
 
-STAGE #04: WRITE AUTHENTICATION MODULE:
-    01. Auth Routes:
-        - describe /register endpoint
-        - describe /login endpoint
-    02. Test endpoints with Postman or Insomnia.
-    03. Write client side:
-        - Login
-        - Register
+        + userModel:
+            firstName: {
+                type: String,
+                isRequired: true
+            }
+            lastName: {
+                type: String,
+                required: true
+            }
+            age: {
+                type: Number,
+                required: true
+            }
+            email: {
+                type: String,
+                required: true
+            }
+            password: {
+                type: String,
+                required: true
+            }
+            tasks: [
+                {
+                    title: {
+                        type: String
+                    }
+                    priority: {
+                        type: String
+                    }
+                    isCompleted: {
+                        type: Boolean
+                    }
+                }
+            ]
+    02. Client side:
+        + redux data structure:
+            - userReducer's initial state:
+                user: {}
+                isLogged: Boolean
+            - actionTypes:
+                'USER/SET_USER'
+                'USER/SET_IS_LOGGED'
+                'USER/EDIT_USER'
+                'USER/DELETE_USER'
+                'TASK/ADD_TASK'
+                'TASK/EDIT_TASK'
+                'TASK/DELETE_TASK'
+            - actionCreators:
+                setUser
+                setIsLogged
+                editUser
+                deleteUser
+                addTask
+                editTask
+                deleteTask
 
-STAGE #05: WRITE USER PROFILE MODULE:
-    01. User Routes:
-        - describe /edit endpoint
-        - describe /delete endpoint
-    02. Write Profile component from client side:
-        - describe profile updating logics
-        - describe profile deleting logics  
+        + login form data:
+            Request data:
+                {
+                    email: String,
+                    password: String
+                }
 
-STAGE #06: WRITE TASKS MODULE:
-    01. Tasks Routes:
-        - describe /get endpoint
-        - describe /add endpoint
-        - describe /update endpoint
-        - describe /delete endpoint
-    02. Write TasksList component from client side:
-        - describe getting all tasks logics 
-        - describe adding one task
-        - describe updating task
-        - describe removing task  
+            Response data:
+                (status === 201)
+                {
+                    userId: String (hashed),
+                    token: String,
+                    firstName: String,
+                    lastName: String,
+                    age: Number,
+                    tasks: [
+                        {
+                            title: String,
+                            priority: String,
+                            isCompleted: Boolean
+                        }
+                    ]
+                }
+
+                (status === 400)
+                {
+                    message: 'Incorrect data' (validation)
+                }
+
+                (status === 404)
+                {
+                    message: 'User not found'
+                }
+
+                (status === 500)
+                {
+                    message: 'Server error'
+                }
+
+        + register form data:
+            Request data:
+                {
+                    firstName: String,
+                    lastName: String,
+                    age: Number,
+                    email: String,
+                    password: String,
+                }
+
+            Response data:
+                (status === 201)
+                {
+                    message: 'User has been successfully created'
+                }
+
+                (status === 400)
+                {
+                    message: 'Incorrect data' (validation)
+                }
+
+        + edit form data:
+            Request data:
+                {
+                    userId: String,
+                    token: String,
+                    firstName: String,
+                    lastName: String,
+                    age: Number,
+                    email: String,
+                    tasks: []
+                }
+
+            Response data:
+                (status === 201)
+                {
+                    userId: String,
+                    token: String,
+                    firstName: String,
+                    lastName: String,
+                    age: Number,
+                    email: String,
+                    tasks: []
+                }
+
+                (status === 400)
+                {
+                    message: 'Incorrect data' (validation)
+                }
+
+                (status === 500)
+                {
+                    message: 'Server error'
+                }
+
+        + delete data:
+            Request data:
+                {
+                    userId: String
+                }
+
+            Response data:
+                (status === 200)
+                {
+                    message: 'User has been deleted'
+                }
+
+                (status === 400)
+                {
+                    message: 'Incorrect data'
+                }
+
+                (status === 500)
+                {
+                    message: 'Server error'
+                }
