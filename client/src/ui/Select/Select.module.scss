@@ -9,7 +9,7 @@
     }
 
     &__input {
-        width: 94.5%;
+        width: 93.5%;
         border: none;
         outline: none;
         padding: 0.8rem;
@@ -17,20 +17,26 @@
         transition: $transition;
     }
 
-    &__input:focus .dropdown {
-        opacity: 1;
+    &__dropdown {
+        position: absolute;
+        top: 3.3rem;
+        left: 0;
+        width: 93.5%;
+        padding: 0.8rem;
+        transition: $transition;
+        list-style: none;
+        background-color: $white-semi-transparent;
     }
-}
 
-.dropdown {
-    position: absolute;
-    top: 3.3rem;
-    left: 0;
-    width: 94.5%;
-    padding: 0.8rem;
-    //opacity: 0;
-    //visibility: hidden;
-    transition: $transition;
-    list-style: none;
-    background-color: $white-semi-transparent;
+    &__dropdown-item {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        @include text(1.4rem, 400, none, $black);
+        transition: $transition;
+    }
+
+    &__dropdown-item:hover {
+        background-color: $blue-light;
+        color: $white;
+    }
 }
