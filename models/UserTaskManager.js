@@ -23,7 +23,10 @@ const schema = new Schema({
     },
     tasks: [
         {
-            title: {
+            id: {
+                type: Number
+            },
+            description: {
                 type: String
             },
             priority: {

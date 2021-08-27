@@ -12,7 +12,7 @@ export const useHooks = () => {
             return () => document.removeEventListener('mousedown', onClick);
         }, [ref]);
     };
-    return { useClickOutside }
+    return { useClickOutside };
 };
 
 

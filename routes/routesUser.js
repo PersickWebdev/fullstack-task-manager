@@ -1,5 +1,4 @@
 const { Router } = require('express');
-// const { check, validationResult } = require('express-validator');
 const UserTaskManager = require('../models/UserTaskManager');
 const router = Router();
 

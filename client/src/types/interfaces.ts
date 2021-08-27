@@ -39,17 +39,29 @@ export interface ILoginFormData {
     password?: string;
 }
 
+export interface IAddTaskFormData {
+    task: string;
+    priority: string;
+    isCompleted: boolean;
+}
+
 // UI Interfaces:
 export interface IButton {
     children?: any;
-    action?: () => void;
+    action?: any;
     buttonStyles?: any;
 }
 
 export interface IInput {
     name: string;
     value?: string;
-    action?: () => void;
+    action?: (name: string, value: any) => void;
     placeholder: string;
     inputStyles?: any;
+}
+
+export interface ISelect {
+    selectStyles?: any;
+    value?: string;
+    action?: (name: string, value: any) => void;
 }
