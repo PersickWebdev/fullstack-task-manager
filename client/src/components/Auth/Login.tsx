@@ -3,13 +3,14 @@ import styles from './Auth.module.scss';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { ILoginFormData } from '../../types/interfaces';
-import axios from 'axios';
 import { setUserAC } from '../../redux/actionCreators/userActions';
+import { useRequests } from '../../api';
+import { ILoginFormData } from '../../types/interfaces';
 
 const Login = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const { signInRequest } = useRequests();
     const [ formData, setFormData ] = useState<ILoginFormData>({});
 
     const collectInputValue = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -24,7 +25,7 @@ const Login = () => {
     const submitHandler = async (event: React.MouseEvent) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+            const response = await signInRequest(formData);
             if (response.status === 201) {
                 dispatch(setUserAC(response.data));
                 localStorage.setItem('user', JSON.stringify(response.data));

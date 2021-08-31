@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styles from './Auth.module.scss';
 import { useHistory } from 'react-router';
+import { useRequests } from '../../api';
 import { IRegisterFormData } from '../../types/interfaces';
-import axios from 'axios';
 
 const Register = () => {
     const history = useHistory();
+    const { signUpRequest } = useRequests();
     const [ formData, setFormData ] = useState<IRegisterFormData>({});
 
     const collectInputValue = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -20,10 +21,9 @@ const Register = () => {
     const submitHandler = async (event: React.MouseEvent) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+            const response = await signUpRequest(formData);
             if (response.status === 201) {
                 alert(response.data.message);
-
                 history.push('/');
             }
         } catch(error) {

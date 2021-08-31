@@ -36,4 +36,25 @@ router.post(
     }
 );
 
+router.delete(
+    '/delete',
+    async (request, response) => {
+        try {
+            const { email, taskId } = request.body;
+            const user = await UserTaskManager.findOne({ email });
+
+            if (user) {
+                await UserTaskManager.findOneAndUpdate({ email }, { $pull: { tasks: taskId } });
+                return response.status(200).json({
+                    message: 'Task has been successfully deleted'
+                });
+            }
+        } catch (error) {
+            return response.status(500).json({
+                message: 'Internal server error ... Try again later'
+            });
+        }
+    }
+);
+
 module.exports = router;

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styles from './Profile.module.scss';
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { IUser } from '../../types/interfaces';
-import axios from 'axios';
 import { setUserAC, removeUserAC } from '../../redux/actionCreators/userActions';
+import { useRequests } from '../../api';
 
 interface IProfile {
     user: IUser
@@ -13,6 +14,7 @@ interface IProfile {
 const Profile = ({ user }:IProfile) => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const { userEditRequest, userDeleteRequest } = useRequests();
     const [ editMode, setEditMode ] = useState<boolean>(false);
     const [ formData, setFormData ] = useState<IUser>({
         userId: user.userId,
@@ -41,11 +43,7 @@ const Profile = ({ user }:IProfile) => {
     const deleteProfileHandler = async (event: React.MouseEvent, userId: string) => {
         event.preventDefault();
         try {
-            const response = await axios.delete('http://localhost:5000/api/user/user-delete', {
-                data: {
-                    userId
-                }
-            });
+            const response = await userDeleteRequest({data: {userId}});
             if (response.status === 200) {
                 localStorage.clear();
                 dispatch(removeUserAC());
@@ -59,7 +57,7 @@ const Profile = ({ user }:IProfile) => {
 
     const submitHandler = async (event: React.MouseEvent) => {
         event.preventDefault();
-        const response = await axios.patch('http://localhost:5000/api/user/user-edit', formData);
+        const response = await userEditRequest(formData);
         if (response.status === 201) {
             localStorage.clear();
             dispatch(setUserAC(formData));

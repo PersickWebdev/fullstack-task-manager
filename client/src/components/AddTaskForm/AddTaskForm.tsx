@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import styles from './AddTaskForm.module.scss';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Input, Select, Button } from '../../ui';
 import { useUtils } from '../../utils';
+import { useRequests } from '../../api';
 import { IAddTaskFormData } from '../../types/interfaces';
-import axios from 'axios';
 
 const AddTaskForm = () => {
+    const { taskAddRequest } = useRequests();
     // @ts-ignore
     const { email } = useSelector((state) => state.userReducer.user);
     const { generateId } = useUtils();
@@ -27,7 +29,7 @@ const AddTaskForm = () => {
     const submitHandler = async (event:any) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/tasks/add', formData);
+            const response = await taskAddRequest(formData);
             if (response.status === 201) {
                 console.log('Task has been successfully added', response);
             } else if (response.status === 404) {
