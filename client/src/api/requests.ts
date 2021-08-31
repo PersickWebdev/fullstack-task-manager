@@ -29,12 +29,17 @@ const useRequests = () => {
         return await axios.post(endpoints.tasksAdd, formData);
     };
 
+    const taskEditRequest = async (formData: IAddTaskFormData) => {
+        return await axios.post(endpoints.tasksEdit, formData);
+    };
+
     return {
         signInRequest,
         signUpRequest,
         userEditRequest,
         userDeleteRequest,
-        taskAddRequest
+        taskAddRequest,
+        taskEditRequest
     };
 }
 

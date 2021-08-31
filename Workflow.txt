@@ -286,8 +286,11 @@ STAGE #03: DATA STRUCTURE:
                 }
 
 TODO: 01. Rewrite requests:
-            - signInRequest (Login);
-            - signUpRequest (Register);
-            - userEditRequest (Profile);
-            - userDeleteRequest (Profile);
+            - signInRequest (Login)             (done)
+            - signUpRequest (Register)          (done)
+            - userEditRequest (Profile)         (done)
+            - userDeleteRequest (Profile)       (done)
+            - taskAdd (AddTaskForm)             (done)
+            - taskDelete (AddTaskForm)          (done)
+            - taskEdit (AddTaskForm)            (in progress)
 TODO: 02. Check requests.

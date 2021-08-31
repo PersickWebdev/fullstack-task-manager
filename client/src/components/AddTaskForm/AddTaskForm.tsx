@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './AddTaskForm.module.scss';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Input, Select, Button } from '../../ui';
 import { useUtils } from '../../utils';
