@@ -5,5 +5,12 @@
   border: none;
   outline: none;
   padding: 0.7rem 0;
+  background-color: $blue;
   transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $blue-light;
+    color: $white;
+  }
 }

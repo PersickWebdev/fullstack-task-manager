@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './App.module.scss';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Header, Register, Login, Profile, TasksList } from './components';
+import { Header, Register, Login, Profile, TasksList, Footer } from './components';
 import { IUserReducer } from './types/interfaces';
 import { setIsLogged, setUserAC } from './redux/actionCreators/userActions';
 
@@ -57,6 +57,7 @@ const App = () => {
                     }
                 </div>
             </main>
+            <Footer/>
         </div>
     );
 }

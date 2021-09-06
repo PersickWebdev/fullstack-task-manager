@@ -3,7 +3,8 @@
 
 .footer {
     padding: 3rem;
-    background-color: $blue;
+    grid-area: f;
+    background-color: $grey-dark;
 
     &__rights {
         @include text(2rem, bold, uppercase, $white);

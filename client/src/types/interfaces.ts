@@ -5,7 +5,7 @@ export interface INotification {
 export interface ITask {
     id?: string;
     key?: string;
-    title: string;
+    description: string;
     priority: string;
     isCompleted: boolean;
 }

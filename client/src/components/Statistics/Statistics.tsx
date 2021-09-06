@@ -8,7 +8,7 @@ interface IStatistics {
 
 const Statistics = ({ user }:IStatistics) => {
     const tasks = user.tasks;
-    const tasksCompleted = tasks.map((task) => task.isCompleted);
+    const tasksCompleted = tasks.filter((task) => task.isCompleted);
     const tasksLeft = (tasks.length) - (tasksCompleted.length);
 
     return (

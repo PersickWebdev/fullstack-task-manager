@@ -1,2 +1,33 @@
 @import '../../scss/variables';
 @import '../../scss/mixins';
+
+.tasks-list {
+  &__list {
+    margin-top: 2rem;
+  }
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 0.2fr 5fr 1.5fr 0.7fr;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0.7rem 1rem;
+  background-color: $blue-light;
+
+  &__checkbox-box {
+
+  }
+
+  &__title {
+
+  }
+
+  &__priority {
+
+  }
+
+  &__buttons {
+    text-align: right;
+  }
+}

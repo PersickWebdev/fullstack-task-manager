@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Statistics, Notification } from '../../components';
-import {removeUserAC, setIsLogged} from '../../redux/actionCreators/userActions';
+import { removeUserAC, setIsLogged } from '../../redux/actionCreators/userActions';
 import { IUser } from '../../types/interfaces';
 
 interface IHeader {

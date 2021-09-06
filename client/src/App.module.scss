@@ -17,12 +17,17 @@ html {
 
 .application {
     color: #4d4d4d;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: space-between;
+
+    display: grid;
+    grid-template-rows: 1fr 3.9fr 0fr;
+    grid-template-areas: 'h' 'm' 'f';
 }
 
 .main {
     padding: 5rem 0;
+    grid-area: m;
     background-color: $grey-light;
 }

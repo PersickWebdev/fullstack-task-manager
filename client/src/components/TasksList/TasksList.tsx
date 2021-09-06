@@ -13,9 +13,9 @@ const TasksList = () => {
     const mappedTasks = user.tasks.map((task, index) => {
         return (
             <Task 
-                key={`${task.title}_${index}`}
-                id={`${task.title}_${index}`}
-                title={task.title}
+                key={`${task.description}_${index}`}
+                id={`${task.description}_${index}`}
+                description={task.description}
                 priority={task.priority}
                 isCompleted={task.isCompleted}
             />
@@ -25,7 +25,7 @@ const TasksList = () => {
     return (
         <div className={styles['tasks-list']}>
             <AddTaskForm />
-            <ul className={styles['list']}>
+            <ul className={styles['tasks-list__list']}>
                 {mappedTasks}
             </ul>
         </div>

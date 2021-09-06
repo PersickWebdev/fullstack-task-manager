@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Profile.module.scss';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { IUser } from '../../types/interfaces';
