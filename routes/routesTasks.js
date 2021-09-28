@@ -18,13 +18,14 @@ router.post(
                 }
 
                 await UserTaskManager.findOneAndUpdate({ email }, { $push: { tasks: newTask } });
-
+                save();
                 return response.status(201).json({
-                   message: `Task '${description}' has been successfully added`
+                    message: `Task '${description}' has been successfully added`,
+                    addedTask: newTask
                 });
             } else {
                 return response.status(404).json({
-                    message: 'No such user found'
+                    message: 'No such user found. Cannot add new task'
                 });
             }
 
@@ -76,6 +77,7 @@ router.delete(
     async (request, response) => {
         try {
             const { email, taskId } = request.body;
+            console.log(request.body);
             const user = await UserTaskManager.findOne({ email });
 
             if (user) {
@@ -92,5 +94,26 @@ router.delete(
         }
     }
 );
+
+router.delete(
+    '/task-delete-all',
+    async(request, response) => {
+        try {
+            const { email } = request.body;
+            const user = await UserTaskManager.findOne({ email });
+            if (user) {
+                const updatedUser = await UserTaskManager.findOneAndUpdate({ email }, { $set: { tasks: [] } });
+                return response.status(200).json({
+                    message: 'All tasks have been successfully deleted',
+                    updatedUser
+                });
+            }
+        } catch (error) {
+            return response.status(500).json({
+                message: 'Internal server error ... Try again later'
+            });
+        }
+    }
+)
 
 module.exports = router;

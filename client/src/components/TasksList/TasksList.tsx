@@ -10,6 +10,10 @@ interface ITasksList {
 
 const TasksList = () => {
     const { user } = useSelector(({ userReducer }:ITasksList) => userReducer);
+    // const editTaskHandler = () => {
+    //     console.log('Clicked');
+    // }
+
     const mappedTasks = user.tasks.map((task, index) => {
         return (
             <Task 
@@ -18,6 +22,7 @@ const TasksList = () => {
                 description={task.description}
                 priority={task.priority}
                 isCompleted={task.isCompleted}
+                userEmail={user?.email}
             />
         )
     });
@@ -26,7 +31,14 @@ const TasksList = () => {
         <div className={styles['tasks-list']}>
             <AddTaskForm />
             <ul className={styles['tasks-list__list']}>
-                {mappedTasks}
+                {mappedTasks.length > 0
+                    ?
+                    mappedTasks
+                    :
+                    <p className={styles['tasks-list__notification']}>
+                        Your task list is empty
+                    </p>
+                }
             </ul>
         </div>
     );

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import styles from './AddTaskForm.module.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Input, Select, Button } from '../../ui';
 import { useUtils } from '../../utils';
 import { useRequests } from '../../api';
 import { IAddTaskFormData } from '../../types/interfaces';
+import { addTaskAC } from '../../redux/actionCreators/taskActions';
 
 const AddTaskForm = () => {
+    const dispatch = useDispatch();
     const { taskAddRequest } = useRequests();
     // @ts-ignore
-    const { email } = useSelector((state) => state.userReducer.user);
+    const { user } = useSelector((state) => state.userReducer);
     const { generateId } = useUtils();
     const [ formData, setFormData ] = useState({} as IAddTaskFormData);
 
@@ -17,7 +19,7 @@ const AddTaskForm = () => {
         setFormData(() => {
             return {
                 ...formData,
-                email,
+                email: user.email,
                 taskId: generateId(),
                 [name]: value,
                 isCompleted: false
@@ -25,19 +27,21 @@ const AddTaskForm = () => {
         });
     };
 
-    const submitHandler = async (event:any) => {
+    const submitHandler = async (event: MouseEvent) => {
         event.preventDefault();
         try {
             const response = await taskAddRequest(formData);
             if (response.status === 201) {
-                console.log('Task has been successfully added', response);
+                console.log('Add Task - Response: ', response?.data?.addedTask);
+                // TODO: No reaction to dispatch!
+                dispatch(addTaskAC(response?.data?.addedTask));
             } else if (response.status === 404) {
-                console.log('No use found& Can not add new task', response);
+                console.log('Add Task - Response: ', response?.data?.message);
             } else {
                 console.log('Some other error', response);
             }
         } catch (error) {
-            console.log('Response - error: ', error.data.message);
+            console.log('Response - error: ', error?.data?.message);
         }
     };
 

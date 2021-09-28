@@ -5,9 +5,16 @@ export interface INotification {
 export interface ITask {
     id?: string;
     key?: string;
+    removeTaskHandler?: (id: string | undefined) => void;
+    userEmail?: string;
     description: string;
     priority: string;
     isCompleted: boolean;
+}
+
+export interface ITaskRemoveData {
+    email: string;
+    taskId: string | undefined;
 }
 
 export interface IUser {
@@ -40,7 +47,8 @@ export interface ILoginFormData {
 }
 
 export interface IAddTaskFormData {
-    task: string;
+    taskId: string;
+    description: string;
     priority: string;
     isCompleted: boolean;
 }

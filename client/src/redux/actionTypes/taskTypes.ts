@@ -1,0 +1,5 @@
+export const TASK_TYPES = {
+    ADD: 'TASK/ADD_NEW_TASK',
+    EDIT: 'TASK/EDIT_TASK',
+    REMOVE: 'TASK/REMOVE_TASK'
+}

@@ -5,6 +5,10 @@
   &__list {
     margin-top: 2rem;
   }
+
+  &__notification {
+    @include text(2rem, regular, none, $black);
+  }
 }
 
 .item {

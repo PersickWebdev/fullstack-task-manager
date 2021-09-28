@@ -1,4 +1,4 @@
-import { USER_TYPES } from '../actionTypes/userTypes';
+import { USER_TYPES } from '../actionTypes';
 
 export const setUserAC = (userObject: any) => {
     return {

@@ -21,6 +21,8 @@ const App = () => {
 
     const { isLogged, user } = useSelector(({ userReducer }: IApp) => userReducer);
 
+    console.log('App - User: ', user);
+
     return (
         <div className={styles['application']}>
             <Header
